@@ -94,3 +94,5 @@ Fraction Binary Search Lab
     ├── Templates
     ├── Key formulas
     └── References
+```
+
