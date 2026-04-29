@@ -1,0 +1,26 @@
+import type { Metadata } from "next";
+import "./globals.css";
+import { Navbar } from "@/components/shared/Navbar";
+import { Footer } from "@/components/shared/Footer";
+
+export const metadata: Metadata = {
+  title: "Fraction Binary Search Lab",
+  description:
+    "An interactive competitive programming tutorial for exact rational search.",
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body className="relative min-h-screen antialiased">
+        <div
+          aria-hidden
+          className="app-gradient pointer-events-none fixed inset-0 -z-10"
+        />
+        <Navbar />
+        <main className="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-14">{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+}
