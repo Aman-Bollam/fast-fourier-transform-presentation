@@ -1,7 +1,7 @@
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { PlaceholderPanel } from "@/components/shared/PlaceholderPanel";
 import { ProblemCard } from "@/components/practice/ProblemCard";
-import { PracticeIDESkeleton } from "@/components/practice/PracticeIDESkeleton";
+import { PythonIDE } from "@/components/practice/PythonIDE";
 import { TestCaseSkeleton } from "@/components/practice/TestCaseSkeleton";
 import { PROBLEM_CARDS } from "@/lib/placeholders";
 
@@ -30,7 +30,7 @@ export default function PracticePage() {
           Built-in editor
         </h2>
         <div className="grid gap-6 lg:grid-cols-2">
-          <PracticeIDESkeleton />
+          <PythonIDE />
           <TestCaseSkeleton />
         </div>
       </section>
