@@ -29,10 +29,14 @@ export default function PracticePage() {
         <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-400">
           Built-in editor
         </h2>
-        <div className="grid gap-6 lg:grid-cols-2">
-          <CodeIDE />
-          <TestCaseSkeleton />
-        </div>
+        <CodeIDE />
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-400">
+          Test cases
+        </h2>
+        <TestCaseSkeleton />
       </section>
 
       <section className="space-y-4">

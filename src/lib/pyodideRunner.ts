@@ -17,10 +17,16 @@ const PYODIDE_INDEX_URL = `https://cdn.jsdelivr.net/pyodide/v${PYODIDE_VERSION}/
 
 type StdStream = { batched: (s: string) => void };
 
+interface PyodideGlobals {
+  set: (key: string, value: unknown) => void;
+  delete?: (key: string) => void;
+}
+
 interface PyodideAPI {
   runPythonAsync: (code: string) => Promise<unknown>;
   setStdout: (stream: StdStream) => void;
   setStderr: (stream: StdStream) => void;
+  globals: PyodideGlobals;
 }
 
 interface LoadPyodideOptions {
@@ -80,7 +86,7 @@ export function getPyodide(): Promise<PyodideAPI> {
   return pyodidePromise;
 }
 
-export async function runPython(code: string): Promise<RunResult> {
+export async function runPython(code: string, stdin: string = ""): Promise<RunResult> {
   let pyodide: PyodideAPI;
   try {
     pyodide = await getPyodide();
@@ -89,6 +95,7 @@ export async function runPython(code: string): Promise<RunResult> {
       success: false,
       output: "",
       error: `Failed to initialize Pyodide: ${errorMessage(err)}`,
+      language: "python",
     };
   }
 
@@ -99,14 +106,25 @@ export async function runPython(code: string): Promise<RunResult> {
   pyodide.setStdout({ batched: append });
   pyodide.setStderr({ batched: append });
 
+  // Wire stdin via a fresh StringIO each run so `input()` reads from the
+  // user's input panel and a stale stdin from a previous run never leaks in.
+  pyodide.globals.set("__pyide_stdin__", stdin);
+  const wrapped =
+    "import sys as __pyide_sys__\n" +
+    "from io import StringIO as __pyide_StringIO__\n" +
+    "__pyide_sys__.stdin = __pyide_StringIO__(__pyide_stdin__)\n" +
+    "del __pyide_sys__, __pyide_StringIO__, __pyide_stdin__\n" +
+    code;
+
   try {
-    await pyodide.runPythonAsync(code);
-    return { success: true, output: buffer };
+    await pyodide.runPythonAsync(wrapped);
+    return { success: true, output: buffer, language: "python" };
   } catch (err) {
     return {
       success: false,
       output: buffer,
       error: errorMessage(err),
+      language: "python",
     };
   }
 }

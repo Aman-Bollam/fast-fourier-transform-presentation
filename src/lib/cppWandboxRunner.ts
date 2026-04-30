@@ -29,7 +29,7 @@ type WandboxResponse = {
   program_message?: string;
 };
 
-export async function runCpp(code: string): Promise<RunResult> {
+export async function runCpp(code: string, stdin: string = ""): Promise<RunResult> {
   let response: Response;
   try {
     response = await fetch(WANDBOX_ENDPOINT, {
@@ -39,7 +39,7 @@ export async function runCpp(code: string): Promise<RunResult> {
         code,
         compiler: DEFAULT_COMPILER,
         options: DEFAULT_OPTIONS,
-        stdin: "",
+        stdin,
         save: false,
       }),
     });
@@ -52,6 +52,7 @@ export async function runCpp(code: string): Promise<RunResult> {
         "ad-blocker, or network issue — C++ here depends on Wandbox's " +
         "public API and there is no backend fallback.\n\n" +
         `Details: ${describe(err)}`,
+      language: "cpp",
     };
   }
 
@@ -63,6 +64,7 @@ export async function runCpp(code: string): Promise<RunResult> {
         `Wandbox responded with HTTP ${response.status}. ` +
         "The public API may be rate-limited or temporarily unavailable. " +
         "Try again in a moment.",
+      language: "cpp",
     };
   }
 
@@ -74,6 +76,7 @@ export async function runCpp(code: string): Promise<RunResult> {
       success: false,
       output: "",
       error: `Wandbox returned an unparseable response: ${describe(err)}`,
+      language: "cpp",
     };
   }
 
@@ -89,6 +92,7 @@ export async function runCpp(code: string): Promise<RunResult> {
       success: false,
       output: "",
       error: `Compilation failed:\n${compilerError}`,
+      language: "cpp",
     };
   }
 
@@ -97,6 +101,7 @@ export async function runCpp(code: string): Promise<RunResult> {
       success: false,
       output: programOutput,
       error: `Program terminated by signal: ${data.signal}\n${programError}`.trim(),
+      language: "cpp",
     };
   }
 
@@ -105,6 +110,7 @@ export async function runCpp(code: string): Promise<RunResult> {
       success: false,
       output: programOutput,
       error: `Program exited with status ${status}.\n${programError}`.trim(),
+      language: "cpp",
     };
   }
 
@@ -117,6 +123,7 @@ export async function runCpp(code: string): Promise<RunResult> {
   return {
     success: true,
     output: sections.length > 0 ? sections.join("\n\n") + "\n" : "",
+    language: "cpp",
   };
 }
 
