@@ -9,12 +9,11 @@
 // "pyodide.js")` and exchanges code/results through `postMessage`. The
 // `RunResult` shape below is already the message contract.
 
+import type { RunResult } from "./runnerTypes";
+export type { RunResult };
+
 const PYODIDE_VERSION = "0.26.4";
 const PYODIDE_INDEX_URL = `https://cdn.jsdelivr.net/pyodide/v${PYODIDE_VERSION}/full/`;
-
-export type RunResult =
-  | { success: true; output: string }
-  | { success: false; output: string; error: string };
 
 type StdStream = { batched: (s: string) => void };
 
