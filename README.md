@@ -1,15 +1,15 @@
-# Fraction Binary Search Lab
+# Fast Fourier Transform Lab
 
-Fraction Binary Search Lab is an interactive competitive programming tutorial focused on the exact rational side of fraction binary search: **Stern-Brocot trees, mediants, Farey sequences, and exact fraction search without floating-point precision issues**.
+Fast Fourier Transform Lab is an interactive competitive programming tutorial focused on the **Fast Fourier Transform (FFT)** and its competitive uses: **polynomial multiplication, convolution, the Discrete Fourier Transform (DFT), the Cooley–Tukey algorithm, and the Number Theoretic Transform (NTT)**.
 
-This project was created for a competitive programming topic presentation/tutorial. The chosen topic is inspired by the Fraction Binary Search topic from the provided competitive programming topic list, but this project focuses specifically on exact rational search concepts that go beyond the binary search material covered in class.
+This project was created for a competitive programming topic presentation/tutorial. The chosen topic is inspired by the Fast Fourier Transform topic from the provided competitive programming topic list, and this project focuses specifically on how FFT is used to speed up polynomial and convolution problems that would otherwise be too slow with naive methods.
 
 ## Project Goal
 
-The goal of this project is to make exact fraction search easier to understand by combining three learning styles:
+The goal of this project is to make the Fast Fourier Transform easier to understand by combining three learning styles:
 
-1. **Visual explanations** for building intuition about fractions, mediants, and the Stern-Brocot tree.
-2. **Interactive tracing visualizations** for walking through exact rational search examples step by step.
+1. **Visual explanations** for building intuition about polynomials, roots of unity, and the divide-and-conquer structure of FFT.
+2. **Interactive tracing visualizations** for walking through FFT and convolution examples step by step.
 3. **Practice tools** with starter code, sample test cases, and external problem links.
 
 Instead of only explaining the topic through text, this project teaches the idea through visual intuition, algorithm traces, and hands-on practice.
@@ -18,50 +18,52 @@ Instead of only explaining the topic through text, this project teaches the idea
 
 ## Topic Focus
 
-Class covered several forms of binary search, including binary search on arrays, binary search on answers, floating-point binary search, k-th element search, and average/ratio transformations.
+Class covered several common algorithmic techniques such as divide and conquer, modular arithmetic, and basic number theory.
 
-This project extends the idea of binary search into a different setting: **searching exact rational numbers**.
+This project extends those ideas into a specific high-impact setting: **multiplying polynomials and computing convolutions in `O(n log n)` time** using the Fast Fourier Transform.
 
 The main focus is:
 
-- Stern-Brocot tree
-- Mediant fractions
-- Farey sequences
-- Exact rational search
-- Comparing fractions without decimals
-- Finding fractions without floating-point precision
-- Representing rational numbers as paths of `L` and `R` moves
+- Discrete Fourier Transform (DFT)
+- Roots of unity and the unit circle
+- Cooley–Tukey divide-and-conquer FFT
+- Iterative FFT with bit reversal
+- Inverse FFT (IFFT)
+- Polynomial multiplication via FFT
+- Convolution and its meaning
+- Number Theoretic Transform (NTT) for exact integer convolutions
 
-This keeps the project connected to binary search while avoiding repetition of class content.
+This keeps the project connected to standard divide-and-conquer techniques while introducing a powerful new tool for polynomial-style problems.
 
 ---
 
-## Why Fraction Binary Search?
+## Why Fast Fourier Transform?
 
-Many competitive programming problems involve values that are not simple integers. Some problems involve:
+Many competitive programming problems hide a polynomial multiplication or a convolution inside them. Some problems involve:
 
-- Fractions
-- Rational numbers
-- Ratios
-- Approximation under constraints
-- Ordered sets of fractions
-- Exact comparisons without precision errors
+- Polynomial multiplication
+- Big integer multiplication
+- Counting pairs whose values sum to a target
+- String matching with wildcards
+- Subset sum / coin change style counting
+- Generating function manipulations
+- Long array / signal style problems
 
-A common issue with fractions is that floating-point numbers can introduce precision errors.
+A common issue with these problems is that the naive `O(n^2)` approach is too slow for large `n`.
 
-For example, instead of comparing:
-
-```text
-a / b < c / d
-```
-
-using decimals, we can compare exactly with cross multiplication:
+For example, instead of computing the product of two polynomials directly:
 
 ```text
-a * d < c * b
+C[k] = sum over i of A[i] * B[k - i]
 ```
 
-This project focuses on techniques that let us reason about fractions exactly.
+in `O(n^2)`, FFT computes the same convolution in:
+
+```text
+O(n log n)
+```
+
+This project focuses on techniques that use FFT to turn slow polynomial-style problems into fast ones.
 
 ---
 
@@ -75,13 +77,14 @@ The **Learn** section teaches the concept through both visuals and written expla
 
 It includes:
 
-- What exact rational search is
-- Why floating-point precision can be risky
-- How to compare fractions safely
-- The mediant of two fractions
-- Stern-Brocot tree intuition
-- Farey sequence intuition
-- How rational numbers can be represented as paths of `L` and `R`
+- What polynomial multiplication and convolution are
+- Why naive multiplication is too slow
+- What roots of unity are and why they matter
+- The Discrete Fourier Transform (DFT)
+- The Cooley–Tukey divide-and-conquer FFT
+- Iterative FFT with bit reversal
+- The Inverse FFT (IFFT)
+- Number Theoretic Transform (NTT) intuition
 - Common templates and mistakes
 
 ### 2. Illustrative Examples
@@ -90,10 +93,10 @@ The **Trace** section contains interactive walkthroughs of example problems. Eac
 
 Example trace categories include:
 
-- Finding a target fraction in the Stern-Brocot tree
-- Converting a fraction into an `L/R` path
-- Converting an `L/R` path back into a fraction
-- Exploring Farey sequence relationships
+- Recursive FFT on a small polynomial
+- Iterative FFT with bit reversal
+- Polynomial multiplication using FFT
+- Number Theoretic Transform (NTT) on a small input
 
 ### 3. Practice Problems
 
@@ -113,15 +116,15 @@ It includes:
 ## App Structure
 
 ```text
-Fraction Binary Search Lab
+Fast Fourier Transform Lab
 ├── Learn
 │   ├── Visual tutorial
 │   └── Written article
 ├── Trace
-│   ├── Stern-Brocot target search trace
-│   ├── Fraction to L/R path trace
-│   ├── L/R path to fraction trace
-│   └── Farey sequence trace
+│   ├── Recursive FFT trace
+│   ├── Iterative FFT trace
+│   ├── Polynomial multiplication trace
+│   └── NTT trace
 ├── Practice
 │   ├── Built-in IDE/test runner
 │   └── External practice problem links
@@ -169,16 +172,16 @@ This keeps the project easy to deploy while still making it feel like a polished
 
 ### Learn: Visual Tutorial
 
-The Learn section explains exact fraction search using interactive visualizations instead of only text.
+The Learn section explains the Fast Fourier Transform using interactive visualizations instead of only text.
 
 Planned visuals include:
 
-- A number line showing fractions as exact rational points
-- A fraction comparison visual using cross multiplication
-- A mediant animation showing how two fractions create a new fraction between them
-- A Stern-Brocot tree visualization
-- A Farey sequence visualization
-- A path visualization showing how `L` and `R` moves locate a fraction
+- A polynomial as an array of coefficients vs. as samples on the unit circle
+- Roots of unity laid out on the complex unit circle
+- A divide-and-conquer animation showing how FFT splits even and odd terms
+- A bit-reversal visualization for iterative FFT
+- A convolution animation showing how polynomial multiplication aligns terms
+- An NTT visualization showing modular roots of unity
 
 The goal is to explain not just what the algorithm does, but why it works.
 
@@ -190,14 +193,13 @@ The written article supports the visual tutorial by explaining the full concept 
 
 The article covers:
 
-- What fraction binary search is
-- Why exact rational search matters
-- How it differs from floating-point binary search
-- How to compare fractions safely
-- How the mediant works
-- How the Stern-Brocot tree organizes rational numbers
-- How Farey sequences relate to fraction ordering
-- How fractions can be encoded as paths
+- What polynomial multiplication and convolution are
+- Why we need a faster approach than `O(n^2)`
+- What the DFT computes
+- How roots of unity make the DFT structured
+- How Cooley–Tukey turns the DFT into `O(n log n)`
+- How the inverse FFT recovers coefficients
+- How NTT replaces complex roots of unity with modular ones
 - Common implementation mistakes
 
 This makes the project useful even without interacting with every visualization.
@@ -211,15 +213,15 @@ The Trace section is designed like an algorithm walkthrough.
 Each example includes:
 
 - Problem statement
-- Input values
-- Current left and right fraction bounds
-- Current mediant
-- Current path
+- Input polynomial(s) or array
+- Current recursion depth or FFT layer
+- Current twiddle factor / root of unity
+- Current intermediate array
 - Explanation of the current step
 - Highlighted variables
 - Previous, next, and reset controls
 
-The purpose of this section is to show how exact rational search behaves step by step.
+The purpose of this section is to show how FFT and convolution behave step by step.
 
 ---
 
@@ -249,12 +251,12 @@ The Resources section contains quick references for review.
 
 Planned resources include:
 
-- Fraction comparison template
-- Mediant template
-- Stern-Brocot search template
-- Path to fraction template
-- Fraction to path template
-- Farey sequence notes
+- Recursive FFT template
+- Iterative FFT template (with bit reversal)
+- Inverse FFT template
+- Polynomial multiplication template
+- NTT template
+- Roots of unity reference
 - Common mistakes checklist
 - References used for the tutorial
 
@@ -262,88 +264,77 @@ Planned resources include:
 
 ## Key Concepts
 
-### Fraction Comparison
+### Polynomial Multiplication
 
-To compare two fractions:
-
-```text
-a / b and c / d
-```
-
-avoid converting to decimals. Instead, use cross multiplication:
+Two polynomials of degree `n` multiplied directly take `O(n^2)` time:
 
 ```text
-a * d < c * b
+A(x) = a0 + a1*x + a2*x^2 + ... + a_{n-1}*x^{n-1}
+B(x) = b0 + b1*x + b2*x^2 + ... + b_{n-1}*x^{n-1}
 ```
 
-This avoids floating-point precision issues.
+Their product `C(x) = A(x) * B(x)` has coefficients given by a convolution of the coefficient arrays. FFT speeds this up to `O(n log n)`.
 
 ---
 
-### Mediant
+### Discrete Fourier Transform (DFT)
 
-The mediant of two fractions is:
-
-```text
-a / b and c / d
-```
+The DFT evaluates a polynomial at the `n`-th roots of unity:
 
 ```text
-(a + c) / (b + d)
+A_hat[k] = sum over j of A[j] * w_n^{j*k}
 ```
 
-The mediant is useful because it creates a new fraction between the two current bounds.
+where:
+
+```text
+w_n = e^{2*pi*i / n}
+```
+
+is a primitive `n`-th root of unity. The DFT converts coefficient form into point-value form.
 
 ---
 
-### Stern-Brocot Tree
+### Cooley–Tukey FFT
 
-The Stern-Brocot tree is a binary tree containing every positive reduced fraction exactly once.
-
-It starts with two boundary fractions:
+The Cooley–Tukey FFT computes the DFT in `O(n log n)` by recursively splitting the polynomial into even-indexed and odd-indexed terms:
 
 ```text
-0/1 and 1/0
+A(x) = A_even(x^2) + x * A_odd(x^2)
 ```
 
-Their mediant is:
-
-```text
-1/1
-```
-
-Then the process repeats recursively. This gives a way to search over exact fractions without relying on floating-point values.
+Each recursive call works on half the data, which gives the `O(n log n)` running time.
 
 ---
 
-### L/R Path Representation
+### Inverse FFT
 
-Each rational number in the Stern-Brocot tree can be described by a path.
+The Inverse FFT recovers the coefficient form from the point-value form:
 
 ```text
-L = move left
-R = move right
+A[j] = (1 / n) * sum over k of A_hat[k] * w_n^{-j*k}
 ```
 
-This path uniquely identifies the fraction.
+It is essentially the same algorithm as the forward FFT, but with conjugated roots of unity and a final scaling by `1 / n`.
 
 ---
 
-### Farey Sequences
+### Number Theoretic Transform (NTT)
 
-A Farey sequence of order `n` contains all reduced fractions between `0` and `1` whose denominators are at most `n`, listed in increasing order.
+The Number Theoretic Transform replaces complex roots of unity with modular roots of unity in a finite field.
 
-Farey sequences are related to the Stern-Brocot tree because both describe structured ways to organize rational numbers.
+This avoids floating-point precision issues and gives exact integer convolutions, which is useful when the problem requires answers modulo a prime.
 
 ---
 
 ## Common Mistakes
 
-- Comparing fractions with decimals instead of cross multiplication
-- Forgetting that the Stern-Brocot tree contains reduced fractions
-- Updating the wrong bound during mediant search
-- Using floating-point midpoints instead of mediants for exact rational search
-- Ignoring overflow when cross multiplying large values
+- Forgetting to pad polynomial sizes up to the next power of two
+- Not using the conjugate roots of unity in the inverse FFT
+- Forgetting to divide by `n` in the inverse FFT
+- Floating-point precision errors for large coefficients (use NTT instead)
+- Mixing up which array holds coefficients vs. point-value samples
+- Off-by-one errors in bit reversal for iterative FFT
 
 ---
 
@@ -352,8 +343,8 @@ Farey sequences are related to the Stern-Brocot tree because both describe struc
 Clone the repository:
 
 ```bash
-git clone https://github.com/Aman-Bollam/fraction-binary-search-lab.git
-cd fraction-binary-search-lab
+git clone https://github.com/Aman-Bollam/fast-fourier-transform-presentation.git
+cd fast-fourier-transform-presentation
 ```
 
 Install dependencies:
@@ -379,16 +370,16 @@ http://localhost:3000
 ## Suggested Repository Structure
 
 ```text
-fraction-binary-search-lab/
+fast-fourier-transform-presentation/
 ├── README.md
 ├── app/
 │   ├── page.tsx
 │   ├── learn/page.tsx
 │   ├── trace/page.tsx
-│   ├── trace/stern-brocot/page.tsx
-│   ├── trace/fraction-to-path/page.tsx
-│   ├── trace/path-to-fraction/page.tsx
-│   ├── trace/farey/page.tsx
+│   ├── trace/recursive-fft/page.tsx
+│   ├── trace/iterative-fft/page.tsx
+│   ├── trace/polynomial-multiplication/page.tsx
+│   ├── trace/ntt/page.tsx
 │   ├── practice/page.tsx
 │   ├── practice/[slug]/page.tsx
 │   └── resources/page.tsx
@@ -402,7 +393,7 @@ fraction-binary-search-lab/
 │   ├── problems.ts
 │   ├── traces.ts
 │   ├── resources.ts
-│   └── fractions.ts
+│   └── fft.ts
 └── public/
 ```
 
@@ -424,7 +415,7 @@ After deployment, future updates can be made with:
 
 ```bash
 git add .
-git commit -m "Update fraction binary search lab"
+git commit -m "Update fast fourier transform lab"
 git push
 ```
 
@@ -434,8 +425,8 @@ Vercel will automatically rebuild and redeploy the site.
 
 ## References
 
-- [YouKn0wWho Academy: Fraction Binary Search](https://youkn0wwho.academy/topic-list/fraction_binary_search)
-- [CP-Algorithms: Stern-Brocot Tree and Farey Sequences](https://cp-algorithms.com/others/stern_brocot_tree_farey_sequences.html)
+- [YouKn0wWho Academy: Fast Fourier Transform](https://youkn0wwho.academy/topic-list/fft)
+- [CP-Algorithms: Fast Fourier Transform](https://cp-algorithms.com/algebra/fft.html)
 
 ---
 
@@ -447,8 +438,8 @@ Possible future additions:
 - More built-in practice problems
 - Full JavaScript test runner
 - C++ template viewer
-- Better Stern-Brocot tree visualization
-- Farey sequence generation visualizer
+- Better roots-of-unity visualization on the complex plane
+- Bit reversal animation for iterative FFT
 - Difficulty-based filtering for practice problems
 - Animation controls for speed and step size
 - Better error messages in the code runner
@@ -458,10 +449,10 @@ Possible future additions:
 
 ## Final Summary
 
-Fraction Binary Search Lab is designed to make exact rational search easier to learn by combining visual intuition, interactive examples, and hands-on practice.
+Fast Fourier Transform Lab is designed to make FFT and convolution easier to learn by combining visual intuition, interactive examples, and hands-on practice.
 
 The main idea is simple:
 
 ```text
-Fractions can be searched exactly without floating-point precision by using mediants, Stern-Brocot trees, Farey sequences, and L/R path representations.
+Polynomial multiplication and convolutions can be computed in O(n log n) time using the Fast Fourier Transform, with the Number Theoretic Transform offering an exact-integer alternative.
 ```

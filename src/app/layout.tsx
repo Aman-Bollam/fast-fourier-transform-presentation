@@ -4,9 +4,9 @@ import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/shared/Footer";
 
 export const metadata: Metadata = {
-  title: "Fraction Binary Search Lab",
+  title: "Fast Fourier Transform Lab",
   description:
-    "An interactive competitive programming tutorial for exact rational search.",
+    "An interactive competitive programming tutorial for the Fast Fourier Transform.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

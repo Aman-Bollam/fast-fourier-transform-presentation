@@ -56,19 +56,19 @@ export const PROBLEM_CARDS: ProblemCardData[] = [
   {
     title: "Placeholder Problem A",
     difficulty: "Easy",
-    tags: ["binary-search", "fractions"],
+    tags: ["fft", "convolution"],
     blurb: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   },
   {
     title: "Placeholder Problem B",
     difficulty: "Medium",
-    tags: ["binary-search", "averages"],
+    tags: ["fft", "polynomials"],
     blurb: "Proin finibus augue ac pulvinar blandit.",
   },
   {
     title: "Placeholder Problem C",
     difficulty: "Hard",
-    tags: ["stern-brocot", "rationals"],
+    tags: ["ntt", "modular"],
     blurb: "Nam semper lectus eu arcu rutrum posuere.",
   },
 ];

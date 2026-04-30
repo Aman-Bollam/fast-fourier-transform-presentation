@@ -17,9 +17,9 @@ export function Navbar() {
     <header className="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
         <Link href="/" className="flex items-center gap-2 group">
-          <span className="inline-block size-2 rounded-full bg-gradient-to-br from-blue-400 to-purple-500" />
+          <span className="inline-block size-2 rounded-full bg-linear-to-br from-blue-400 to-purple-500" />
           <span className="text-sm font-semibold tracking-tight text-slate-100 group-hover:text-white">
-            Fraction Binary Search Lab
+            Fast Fourier Transform Lab
           </span>
         </Link>
 

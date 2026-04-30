@@ -10,13 +10,13 @@ export default function HomePage() {
           Interactive Tutorial
         </p>
         <h1 className="text-4xl sm:text-6xl font-semibold tracking-tight text-slate-100 leading-[1.05]">
-          Fraction Binary{" "}
-          <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-300 bg-clip-text text-transparent">
-            Search Lab
+          Fast Fourier{" "}
+          <span className="bg-linear-to-r from-blue-400 via-purple-400 to-cyan-300 bg-clip-text text-transparent">
+            Transform Lab
           </span>
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-slate-400 leading-relaxed">
-          An interactive competitive programming tutorial for exact rational search.
+          An interactive competitive programming tutorial for the Fast Fourier Transform.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Link

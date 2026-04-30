@@ -39,7 +39,7 @@ export function FeatureCard({
       className={`group relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg ${ACCENT_RING[accent]}`}
     >
       <div
-        className={`absolute inset-x-0 top-0 h-px bg-gradient-to-r ${ACCENT_BAR[accent]} via-transparent to-transparent`}
+        className={`absolute inset-x-0 top-0 h-px bg-linear-to-r ${ACCENT_BAR[accent]} via-transparent to-transparent`}
       />
       <h3 className={`text-lg font-semibold tracking-tight ${ACCENT_TITLE[accent]}`}>
         {title}
