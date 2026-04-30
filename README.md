@@ -245,6 +245,17 @@ The goal is to make practice feel closer to a lightweight LeetCode environment.
 
 ---
 
+## IDE Architecture
+
+- Monaco Editor provides syntax-highlighted editing for Python and C++.
+- Python code runs locally in the browser using Pyodide.
+- C++ code is sent to Wandbox's public compiler API for compilation and execution.
+- Results are normalized into a shared output format and displayed in the IDE console.
+- Code drafts are saved locally in the browser using `localStorage`.
+- The runner design is modular, so Wandbox can later be replaced with a self-hosted compiler service or WebAssembly-based C++ toolchain.
+
+---
+
 ## Resources
 
 The Resources section contains quick references for review.
