@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FeatureCard } from "@/components/shared/FeatureCard";
+import { PresentationDeck } from "@/components/home/PresentationDeck";
 import { ASSIGNMENT_MAP, FEATURE_CARDS } from "@/lib/placeholders";
 
 export default function HomePage() {
@@ -38,6 +39,13 @@ export default function HomePage() {
             Practice
           </Link>
         </div>
+      </section>
+
+      <section>
+        <h2 className="text-xl font-semibold tracking-tight text-slate-100 mb-4">
+          Overview
+        </h2>
+        <PresentationDeck />
       </section>
 
       <section>

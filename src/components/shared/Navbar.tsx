@@ -8,6 +8,7 @@ const LINKS = [
   { href: "/trace", label: "Trace" },
   { href: "/practice", label: "Practice" },
   { href: "/resources", label: "Resources" },
+  { href: "/citations", label: "Citations" },
 ];
 
 export function Navbar() {

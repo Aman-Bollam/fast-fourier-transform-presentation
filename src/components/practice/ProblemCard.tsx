@@ -26,7 +26,9 @@ export function ProblemCard({ problem }: { problem: ProblemCardData }) {
       </div>
       <p className="mt-4 text-sm text-slate-400 leading-relaxed flex-1">{problem.blurb}</p>
       <Link
-        href="#"
+        href={problem.href}
+        target="_blank"
+        rel="noopener noreferrer"
         className="mt-5 inline-flex w-fit items-center text-sm font-medium text-blue-300 hover:text-blue-200"
       >
         View problem →

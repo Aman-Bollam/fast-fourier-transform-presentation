@@ -1,29 +1,15 @@
 import { SectionHeader } from "@/components/shared/SectionHeader";
-import { VisualTutorialSkeleton } from "@/components/learn/VisualTutorialSkeleton";
-import { ArticleSkeleton } from "@/components/learn/ArticleSkeleton";
+import { FFTArticle } from "@/components/learn/FFTArticle";
 
 export default function LearnPage() {
   return (
     <div className="space-y-12">
       <SectionHeader
         eyebrow="Learn"
-        title="Tutorial"
-        description="Visual modules and a written article. Real content will land here later — for now this is the layout shell."
+        title="Fast Fourier Transform"
+        description="A guided walkthrough from naive polynomial multiplication through the Cooley-Tukey algorithm and NTT, with interactive visualizations embedded at each step."
       />
-
-      <section className="space-y-4">
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-400">
-          Visual tutorial
-        </h2>
-        <VisualTutorialSkeleton />
-      </section>
-
-      <section className="space-y-4">
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-400">
-          Written article
-        </h2>
-        <ArticleSkeleton />
-      </section>
+      <FFTArticle />
     </div>
   );
 }
