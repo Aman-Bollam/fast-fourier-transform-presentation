@@ -48,43 +48,6 @@ export const ASSIGNMENT_MAP: { left: string; right: string; href: string }[] = [
   { left: "Citations", right: "Citations", href: "/citations" },
 ];
 
-export type Difficulty = "Easy" | "Medium" | "Hard";
-
-export type ProblemCardData = {
-  title: string;
-  difficulty: Difficulty;
-  tags: string[];
-  blurb: string;
-  href: string;
-};
-
-export const PROBLEM_CARDS: ProblemCardData[] = [
-  {
-    title: "CF 1096G — Lucky Tickets",
-    difficulty: "Medium",
-    tags: ["fft", "convolution", "counting"],
-    blurb:
-      "Count pairs of length-n strings whose digit sums are equal. Model as polynomial multiplication to count matching digit-sum pairs in O(n log n).",
-    href: "https://codeforces.com/problemset/problem/1096/G",
-  },
-  {
-    title: "CF 632E — Thief in a Shop",
-    difficulty: "Hard",
-    tags: ["fft", "ntt", "knapsack"],
-    blurb:
-      "Determine which total values can be achieved by choosing exactly k items. Use FFT/NTT to accelerate the polynomial exponentiation for the knapsack.",
-    href: "https://codeforces.com/problemset/problem/632/E",
-  },
-  {
-    title: "CF 755G — PolandBall and Many Other Balls",
-    difficulty: "Hard",
-    tags: ["ntt", "polynomial", "matrix-exponentiation"],
-    blurb:
-      "Count groupings of n balls in k ways. Raise a 2×2 matrix of generating-function polynomials to the n-th power via binary doubling with NTT over mod 998244353.",
-    href: "https://codeforces.com/problemset/problem/755/G",
-  },
-];
-
 export type ResourceSection = {
   title: string;
   description: string;
