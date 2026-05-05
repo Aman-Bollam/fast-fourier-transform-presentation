@@ -18,7 +18,18 @@ export function Navbar() {
     <header className="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
         <Link href="/" className="flex items-center gap-2 group">
-          <span className="inline-block size-2 rounded-full bg-linear-to-br from-blue-400 to-purple-500" />
+          <svg
+            viewBox="0 0 28 16"
+            aria-hidden
+            className="h-4 w-7 text-cyan-400"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={1.8}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M1 8 L4 8 L6 3 L9 13 L12 5 L15 11 L18 8 L21 4 L24 12 L27 8" />
+          </svg>
           <span className="text-sm font-semibold tracking-tight text-slate-100 group-hover:text-white">
             Fast Fourier Transform Lab
           </span>

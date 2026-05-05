@@ -1,7 +1,7 @@
 export const LOREM =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin finibus augue ac pulvinar blandit. Nam semper lectus eu arcu rutrum posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed euismod eros vel diam dapibus pulvinar. Curabitur ultrices tincidunt blandit. Vestibulum ante libero, eleifend eu lobortis eu, aliquam eu felis. Donec non nunc velit. Suspendisse potenti.";
 
-export type Accent = "blue" | "purple" | "cyan" | "emerald";
+export type Accent = "blue" | "cyan" | "emerald";
 
 export type FeatureCardData = {
   title: string;
@@ -23,7 +23,7 @@ export const FEATURE_CARDS: FeatureCardData[] = [
     description:
       "Step through recursive and iterative FFT with live variable inspection and highlighted code.",
     href: "/trace",
-    accent: "purple",
+    accent: "cyan",
   },
   {
     title: "Practice",
@@ -41,11 +41,43 @@ export const FEATURE_CARDS: FeatureCardData[] = [
   },
 ];
 
-export const ASSIGNMENT_MAP: { left: string; right: string; href: string }[] = [
-  { left: "Tutorial", right: "Learn", href: "/learn" },
-  { left: "Examples", right: "Trace", href: "/trace" },
-  { left: "Practice Problems", right: "Practice", href: "/practice" },
-  { left: "Citations", right: "Citations", href: "/citations" },
+export type AssignmentMapRow = {
+  left: string;
+  description: string;
+  right: string;
+  href: string;
+  accent: Accent;
+};
+
+export const ASSIGNMENT_MAP: AssignmentMapRow[] = [
+  {
+    left: "Tutorial",
+    description: "Read and understand the core concepts.",
+    right: "Learn",
+    href: "/learn",
+    accent: "blue",
+  },
+  {
+    left: "Examples",
+    description: "Walk through examples and traces.",
+    right: "Trace",
+    href: "/trace",
+    accent: "cyan",
+  },
+  {
+    left: "Practice Problems",
+    description: "Solve problems and test your skills.",
+    right: "Practice",
+    href: "/practice",
+    accent: "cyan",
+  },
+  {
+    left: "Citations",
+    description: "Cite the tutorial and references.",
+    right: "Citations",
+    href: "/citations",
+    accent: "cyan",
+  },
 ];
 
 export type ResourceSection = {
@@ -76,7 +108,7 @@ export const RESOURCE_SECTIONS: ResourceSection[] = [
       "Convolution theorem: IFFT(FFT(a) · FFT(b))",
       "Twiddle factor: ω_N^k = e^{-2πik/N}",
     ],
-    accent: "purple",
+    accent: "cyan",
   },
   {
     title: "References",

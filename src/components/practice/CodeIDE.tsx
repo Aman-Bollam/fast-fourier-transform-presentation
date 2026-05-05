@@ -85,10 +85,10 @@ const MONACO_LANG: Record<Language, string> = {
   cpp: "cpp",
 };
 
-const DIFFICULTY_VARIANT: Record<Difficulty, "emerald" | "blue" | "purple"> = {
+const DIFFICULTY_VARIANT: Record<Difficulty, "emerald" | "blue" | "cyan"> = {
   Easy: "emerald",
   Medium: "blue",
-  Hard: "purple",
+  Hard: "cyan",
 };
 
 type PyodideState = "loading" | "ready" | "error";
@@ -279,12 +279,13 @@ export function CodeIDE({ problem }: { problem?: FftProblem }) {
   })();
 
   return (
-    <section className="rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur p-6 flex flex-col">
-      <header className="flex flex-wrap items-center justify-between gap-2 mb-4">
+    <section className="flex flex-col rounded-xl border border-cyan-500/20 bg-slate-950/45 p-5 shadow-[0_20px_70px_rgba(2,6,23,0.45),inset_0_1px_0_rgba(148,163,184,0.04)] backdrop-blur">
+      <header className="mb-4 flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-3">
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-300">
+          <h3 className="text-sm font-semibold text-slate-100">
             Editor
           </h3>
+          <span className="text-slate-500">•</span>
           <StatusPill
             language={language}
             pyodideState={pyodideState}
@@ -294,7 +295,7 @@ export function CodeIDE({ problem }: { problem?: FftProblem }) {
         <select
           value={language}
           onChange={(e) => setLanguage(e.target.value as Language)}
-          className="rounded-md border border-slate-800 bg-slate-950/60 px-2 py-1 text-xs text-slate-200 hover:border-slate-700 transition-colors"
+          className="rounded-lg border border-slate-700 bg-slate-950/85 px-3 py-2 text-xs text-slate-200 transition-colors hover:border-cyan-500/40"
         >
           <option value="python">Python 3 (Pyodide)</option>
           <option value="cpp">C++ (Wandbox)</option>
@@ -307,8 +308,8 @@ export function CodeIDE({ problem }: { problem?: FftProblem }) {
         {/* Left column — editor + run controls */}
         <div className="lg:col-span-3 flex flex-col gap-3">
           <div
-            className="rounded-xl border border-slate-800 overflow-hidden bg-[#1e1e1e]"
-            style={{ height: 440 }}
+            className="overflow-hidden rounded-lg border border-slate-700/80 bg-[#1b1b1b] shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]"
+            style={{ height: 430 }}
           >
             <MonacoEditor
               height="100%"
@@ -339,8 +340,9 @@ export function CodeIDE({ problem }: { problem?: FftProblem }) {
               type="button"
               onClick={handleRunCustom}
               disabled={customRunDisabled}
-              className="rounded-lg bg-blue-500/90 hover:bg-blue-500 px-4 py-2 text-sm font-medium text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="inline-flex items-center gap-2 rounded-lg bg-blue-500 px-4 py-2 text-sm font-medium text-white shadow-[0_10px_26px_rgba(59,130,246,0.28)] transition-colors hover:bg-blue-400 disabled:cursor-not-allowed disabled:opacity-50"
             >
+              <span aria-hidden>▷</span>
               {customRunLabel}
             </button>
             <button
@@ -352,15 +354,16 @@ export function CodeIDE({ problem }: { problem?: FftProblem }) {
                   ? "Pick a problem above to enable sample tests"
                   : undefined
               }
-              className="rounded-lg bg-emerald-500/90 hover:bg-emerald-500 px-4 py-2 text-sm font-medium text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="inline-flex items-center gap-2 rounded-lg bg-emerald-500/85 px-4 py-2 text-sm font-medium text-white shadow-[0_10px_26px_rgba(16,185,129,0.18)] transition-colors hover:bg-emerald-500 disabled:cursor-not-allowed disabled:opacity-50"
             >
+              <span aria-hidden>✓</span>
               {sampleRunLabel}
             </button>
             {problem && (
               <button
                 type="button"
                 onClick={handleLoadStarter}
-                className="rounded-lg border border-slate-700 bg-slate-900/60 hover:bg-slate-800 hover:border-slate-600 px-4 py-2 text-sm font-medium text-slate-200 transition-colors"
+                className="rounded-lg border border-slate-700 bg-slate-950/70 px-4 py-2 text-sm font-medium text-slate-200 transition-colors hover:border-slate-600 hover:bg-slate-900"
               >
                 Load starter code
               </button>
@@ -368,13 +371,13 @@ export function CodeIDE({ problem }: { problem?: FftProblem }) {
             <button
               type="button"
               onClick={handleResetCode}
-              className="rounded-lg border border-slate-700 bg-slate-900/60 hover:bg-slate-800 hover:border-slate-600 px-4 py-2 text-sm font-medium text-slate-200 transition-colors"
+              className="rounded-lg border border-slate-700 bg-slate-950/70 px-4 py-2 text-sm font-medium text-slate-200 transition-colors hover:border-slate-600 hover:bg-slate-900"
             >
               Reset code
             </button>
           </div>
 
-          <p className="text-xs text-slate-500 leading-relaxed">
+          <p className="text-xs leading-relaxed text-slate-500">
             {language === "python" ? (
               "Runs in your browser via Pyodide (WebAssembly)."
             ) : (
@@ -422,9 +425,9 @@ export function CodeIDE({ problem }: { problem?: FftProblem }) {
 
 function ProblemHeader({ problem }: { problem: FftProblem }) {
   return (
-    <div className="mb-4 rounded-xl border border-cyan-500/30 bg-cyan-500/4 px-4 py-3 flex flex-wrap items-center gap-x-3 gap-y-2">
-      <span className="text-xs font-semibold uppercase tracking-wide text-cyan-300">
-        Selected
+    <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-2 rounded-lg border border-cyan-500/25 bg-slate-950/55 px-4 py-3">
+      <span className="text-sm font-medium text-blue-300">
+        Selected problem:
       </span>
       <span className="text-sm font-medium text-slate-100">{problem.title}</span>
       <Badge variant={DIFFICULTY_VARIANT[problem.difficulty]}>
@@ -437,7 +440,7 @@ function ProblemHeader({ problem }: { problem: FftProblem }) {
           </Badge>
         ))}
       </div>
-      <span className="text-xs text-slate-400">
+      <span className="ml-auto text-xs text-slate-400">
         {problem.sampleTests.length} sample test
         {problem.sampleTests.length === 1 ? "" : "s"}
       </span>
@@ -445,7 +448,7 @@ function ProblemHeader({ problem }: { problem: FftProblem }) {
         href={problem.problemUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="ml-auto text-xs font-medium text-blue-300 hover:text-blue-200"
+        className="text-xs font-medium text-blue-300 hover:text-blue-200"
       >
         Open on Codeforces ↗
       </a>
@@ -465,13 +468,13 @@ function InputPanel({
   return (
     <div className="flex flex-col">
       <div className="flex items-center justify-between mb-2">
-        <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+        <h4 className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-300">
           Input
         </h4>
         <button
           type="button"
           onClick={onReset}
-          className="text-xs text-slate-400 hover:text-slate-200 transition-colors"
+          className="text-xs text-slate-400 transition-colors hover:text-slate-200"
         >
           Reset input
         </button>
@@ -481,7 +484,7 @@ function InputPanel({
         onChange={(e) => onChange(e.target.value)}
         spellCheck={false}
         placeholder="stdin — what input() and cin will read"
-        className="rounded-xl border border-slate-800 bg-slate-950/80 p-3 text-sm font-mono text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-1 focus:ring-blue-500/50 focus:border-blue-500/50 resize-none"
+        className="resize-none rounded-lg border border-slate-700/80 bg-slate-950/80 p-3 text-sm font-mono text-slate-200 placeholder:text-slate-600 focus:border-blue-500/50 focus:outline-none focus:ring-1 focus:ring-blue-500/50"
         rows={6}
       />
     </div>
@@ -536,19 +539,19 @@ function OutputPanel({ output, onClear }: { output: string; onClear: () => void 
   return (
     <div className="flex flex-col">
       <div className="flex items-center justify-between mb-2">
-        <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
-          Custom output
+        <h4 className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-300">
+          Output
         </h4>
         <button
           type="button"
           onClick={onClear}
           disabled={output.length === 0}
-          className="text-xs text-slate-400 hover:text-slate-200 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+          className="text-xs text-slate-400 transition-colors hover:text-slate-200 disabled:cursor-not-allowed disabled:opacity-40"
         >
           Clear output
         </button>
       </div>
-      <pre className="min-h-32 max-h-72 overflow-auto rounded-xl border border-slate-800 bg-slate-950/80 p-4 text-sm font-mono text-slate-300 whitespace-pre-wrap">
+      <pre className="min-h-32 max-h-72 overflow-auto whitespace-pre-wrap rounded-lg border border-slate-700/80 bg-slate-950/80 p-4 text-sm font-mono text-slate-300">
         {output.length > 0 ? (
           output
         ) : (
@@ -674,9 +677,9 @@ function SampleTestsReference({
   onUseInput: (input: string) => void;
 }) {
   return (
-    <div className="mt-6 rounded-xl border border-slate-800 bg-slate-950/40 p-4">
+    <div className="mt-6 rounded-lg border border-slate-700/80 bg-slate-950/35 p-4">
       <div className="mb-3 flex items-center justify-between">
-        <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-300">
+        <h4 className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-300">
           Sample tests for this problem
         </h4>
         <span className="text-xs text-slate-500">
@@ -687,14 +690,14 @@ function SampleTestsReference({
         {samples.map((s, i) => (
           <div
             key={i}
-            className="rounded-lg border border-slate-800 bg-slate-950/60 p-3"
+            className="rounded-lg border border-slate-700/80 bg-slate-950/60 p-3"
           >
             <div className="mb-2 flex items-center justify-between gap-2">
               <p className="text-xs font-medium text-slate-200">{s.name}</p>
               <button
                 type="button"
                 onClick={() => onUseInput(s.input)}
-                className="text-xs font-medium text-blue-300 hover:text-blue-200"
+                className="rounded-md border border-blue-500/30 px-2 py-1 text-xs font-medium text-blue-300 hover:border-blue-400/50 hover:text-blue-200"
               >
                 Use as input
               </button>
@@ -702,13 +705,13 @@ function SampleTestsReference({
             <p className="mb-1 text-[10px] uppercase tracking-wide text-slate-500">
               Input
             </p>
-            <pre className="mb-2 max-h-28 overflow-auto rounded border border-slate-800 bg-slate-950/80 p-2 text-xs font-mono text-slate-300 whitespace-pre-wrap">
+            <pre className="mb-2 max-h-28 overflow-auto whitespace-pre-wrap rounded border border-slate-700/70 bg-slate-950/80 p-2 text-xs font-mono text-slate-300">
               {s.input || <span className="text-slate-600">(empty)</span>}
             </pre>
             <p className="mb-1 text-[10px] uppercase tracking-wide text-slate-500">
               Expected output
             </p>
-            <pre className="max-h-28 overflow-auto rounded border border-slate-800 bg-slate-950/80 p-2 text-xs font-mono text-slate-300 whitespace-pre-wrap">
+            <pre className="max-h-28 overflow-auto whitespace-pre-wrap rounded border border-slate-700/70 bg-slate-950/80 p-2 text-xs font-mono text-slate-300">
               {s.expectedOutput || (
                 <span className="text-slate-600">(empty)</span>
               )}

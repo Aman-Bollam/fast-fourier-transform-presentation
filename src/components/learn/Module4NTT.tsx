@@ -72,8 +72,8 @@ export function Module4NTT() {
               <li>• Precision matters</li>
             </ul>
           </div>
-          <div className="rounded-lg border border-purple-900/40 bg-purple-950/20 p-2">
-            <p className="text-purple-400 font-semibold mb-1">Use FFT when</p>
+          <div className="rounded-lg border border-cyan-900/40 bg-cyan-950/20 p-2">
+            <p className="text-cyan-400 font-semibold mb-1">Use FFT when</p>
             <ul className="text-slate-400 space-y-0.5">
               <li>• Coefficients are real/complex</li>
               <li>• Need arbitrary modulus</li>

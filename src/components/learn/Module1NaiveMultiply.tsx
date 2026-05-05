@@ -66,7 +66,7 @@ export function Module1NaiveMultiply() {
         <p className="text-xs text-slate-400 mt-1">
           <span className="text-blue-400 font-mono">(1 + 2x + 3x²)</span>
           {" × "}
-          <span className="text-purple-400 font-mono">(4 + 5x)</span>
+          <span className="text-cyan-400 font-mono">(4 + 5x)</span>
           {" — watch each pairwise product accumulate"}
         </p>
       </div>

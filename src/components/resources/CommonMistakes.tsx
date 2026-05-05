@@ -39,15 +39,20 @@ const MISTAKES: MistakeItem[] = [
 
 export function CommonMistakes() {
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       {MISTAKES.map((m, i) => (
         <div
           key={i}
-          className="rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur p-5 border-l-4 border-l-amber-500/60"
+          className="grid gap-4 rounded-xl border border-cyan-500/20 bg-slate-950/45 p-4 shadow-[inset_0_1px_0_rgba(148,163,184,0.04)] backdrop-blur lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.95fr)] lg:items-center"
         >
-          <h4 className="text-sm font-semibold text-slate-200 mb-1">{m.title}</h4>
-          <p className="text-sm text-slate-400 leading-relaxed mb-2">{m.explanation}</p>
-          <div className="rounded-md bg-emerald-950/30 border border-emerald-800/40 px-3 py-2">
+          <div className="flex items-start gap-4">
+            <span className="mt-1 text-lg text-amber-300">⚠</span>
+            <div>
+              <h4 className="text-sm font-semibold text-slate-200">{m.title}</h4>
+              <p className="mt-1 text-sm leading-relaxed text-slate-400">{m.explanation}</p>
+            </div>
+          </div>
+          <div className="rounded-lg border border-emerald-500/35 bg-emerald-500/10 px-4 py-3">
             <span className="text-xs font-medium text-emerald-400">Fix: </span>
             <span className="text-xs text-emerald-300">{m.fix}</span>
           </div>

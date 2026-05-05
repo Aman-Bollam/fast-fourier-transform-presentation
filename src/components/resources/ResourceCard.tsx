@@ -2,7 +2,6 @@ import type { ResourceSection } from "@/lib/placeholders";
 
 const ACCENT: Record<ResourceSection["accent"], string> = {
   blue: "text-blue-300",
-  purple: "text-purple-300",
   cyan: "text-cyan-300",
   emerald: "text-emerald-300",
 };

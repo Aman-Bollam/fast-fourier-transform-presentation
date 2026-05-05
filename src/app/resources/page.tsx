@@ -1,4 +1,3 @@
-import { SectionHeader } from "@/components/shared/SectionHeader";
 import { CodeTemplate } from "@/components/resources/CodeTemplate";
 import { FormulaReference } from "@/components/resources/FormulaReference";
 import { CommonMistakes } from "@/components/resources/CommonMistakes";
@@ -205,17 +204,90 @@ print(multiply_polynomials([1, 2, 3], [4, 5]))`,
   },
 ];
 
+function ResourcesHeroVisual() {
+  const points = [
+    [70, 56], [126, 40], [184, 64], [244, 36], [302, 58], [360, 42],
+    [82, 118], [154, 136], [226, 112], [296, 138], [370, 106],
+  ];
+
+  return (
+    <svg viewBox="0 0 560 220" className="h-52 w-full text-cyan-400" aria-hidden="true">
+      <defs>
+        <linearGradient id="resourcesMesh" x1="0" x2="1" y1="1" y2="0">
+          <stop offset="0%" stopColor="#0f172a" stopOpacity="0" />
+          <stop offset="55%" stopColor="#0ea5e9" stopOpacity="0.72" />
+          <stop offset="100%" stopColor="#22d3ee" stopOpacity="0.22" />
+        </linearGradient>
+        <linearGradient id="resourcesBars" x1="0" x2="0" y1="1" y2="0">
+          <stop offset="0%" stopColor="#0284c7" stopOpacity="0.04" />
+          <stop offset="100%" stopColor="#22d3ee" stopOpacity="0.72" />
+        </linearGradient>
+      </defs>
+
+      {points.map(([x, y], i) => (
+        <g key={i}>
+          {i < points.length - 1 && (
+            <line x1={x} y1={y} x2={points[i + 1][0]} y2={points[i + 1][1]} stroke="url(#resourcesMesh)" strokeWidth="1.1" />
+          )}
+          {i < points.length - 3 && (
+            <line x1={x} y1={y} x2={points[i + 3][0]} y2={points[i + 3][1]} stroke="#0ea5e9" strokeOpacity="0.24" strokeWidth="1" />
+          )}
+          <circle cx={x} cy={y} r={2.5} fill="#22d3ee" opacity="0.85" />
+        </g>
+      ))}
+
+      {[0, 1, 2, 3, 4].map((i) => (
+        <path
+          key={i}
+          d={`M330 ${176 - i * 12} C 390 ${130 - i * 11}, 450 ${185 - i * 13}, 540 ${92 - i * 16}`}
+          fill="none"
+          stroke="#0ea5e9"
+          strokeOpacity={0.1 + i * 0.08}
+          strokeWidth="1"
+        />
+      ))}
+
+      {Array.from({ length: 30 }).map((_, i) => {
+        const h = 12 + ((i * 23) % 94);
+        return (
+          <rect
+            key={i}
+            x={408 + i * 4.2}
+            y={182 - h}
+            width="1.5"
+            height={h}
+            rx="0.75"
+            fill="url(#resourcesBars)"
+            opacity={0.12 + (i % 7) * 0.035}
+          />
+        );
+      })}
+    </svg>
+  );
+}
+
 export default function ResourcesPage() {
   return (
-    <div className="space-y-12">
-      <SectionHeader
-        eyebrow="Resources"
-        title="Reference Material"
-        description="Competition-ready code templates, key formulas with derivations, and common implementation pitfalls."
-      />
+    <div className="space-y-10">
+      <section className="grid items-center gap-8 pt-4 lg:grid-cols-[minmax(0,1fr)_minmax(420px,0.95fr)]">
+        <header>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-cyan-300">
+            Resources
+          </p>
+          <h1 className="text-4xl font-semibold tracking-tight text-slate-100 sm:text-5xl">
+            Reference Material
+          </h1>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-400">
+            Competition-ready code templates, key formulas with derivations, and common implementation pitfalls.
+          </p>
+        </header>
+        <div className="hidden lg:block">
+          <ResourcesHeroVisual />
+        </div>
+      </section>
 
       <section className="space-y-5">
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-400">
+        <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
           Code Templates
         </h2>
         <div className="grid gap-5 lg:grid-cols-2">
@@ -226,14 +298,14 @@ export default function ResourcesPage() {
       </section>
 
       <section className="space-y-5">
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-400">
+        <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
           Key Formulas
         </h2>
         <FormulaReference />
       </section>
 
       <section className="space-y-5">
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-400">
+        <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
           Common Mistakes
         </h2>
         <CommonMistakes />

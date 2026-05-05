@@ -122,7 +122,7 @@ export function FFTArticle() {
           &nbsp;→&nbsp;<InlineMath math="a_0=1,\ a_1=2,\ a_2=3" />
         </Step>
         <Step label="B">
-          Coefficients of B: <code className="font-mono text-purple-300">[4, 5]</code>
+          Coefficients of B: <code className="font-mono text-cyan-300">[4, 5]</code>
           &nbsp;→&nbsp;<InlineMath math="b_0=4,\ b_1=5" />
         </Step>
         <Step label="c₀">

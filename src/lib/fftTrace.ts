@@ -335,12 +335,12 @@ export const STEP_COLORS: Record<string, {
     chipText:     "text-amber-300",
   },
   combine: {
-    activeBg:     "bg-purple-500/20",
-    activeBorder: "border-l-purple-500",
-    activeText:   "text-purple-200",
-    chipBg:       "bg-purple-500/15",
-    chipBorder:   "border-purple-500/50",
-    chipText:     "text-purple-300",
+    activeBg:     "bg-cyan-500/20",
+    activeBorder: "border-l-cyan-500",
+    activeText:   "text-cyan-200",
+    chipBg:       "bg-cyan-500/15",
+    chipBorder:   "border-cyan-500/50",
+    chipText:     "text-cyan-300",
   },
   return: {
     activeBg:     "bg-slate-500/20",
@@ -359,12 +359,12 @@ export const STEP_COLORS: Record<string, {
     chipText:     "text-amber-300",
   },
   butterfly_op: {
-    activeBg:     "bg-purple-500/20",
-    activeBorder: "border-l-purple-500",
-    activeText:   "text-purple-200",
-    chipBg:       "bg-purple-500/15",
-    chipBorder:   "border-purple-500/50",
-    chipText:     "text-purple-300",
+    activeBg:     "bg-cyan-500/20",
+    activeBorder: "border-l-cyan-500",
+    activeText:   "text-cyan-200",
+    chipBg:       "bg-cyan-500/15",
+    chipBorder:   "border-cyan-500/50",
+    chipText:     "text-cyan-300",
   },
 };
 

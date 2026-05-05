@@ -44,17 +44,22 @@ const FORMULAS: FormulaItem[] = [
 
 export function FormulaReference() {
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       {FORMULAS.map((f) => (
         <div
           key={f.name}
-          className="rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur p-5 space-y-3"
+          className="grid gap-4 rounded-xl border border-cyan-500/20 bg-slate-950/45 p-4 shadow-[inset_0_1px_0_rgba(148,163,184,0.04)] backdrop-blur lg:grid-cols-[minmax(180px,0.7fr)_minmax(260px,1fr)_minmax(260px,1.2fr)] lg:items-center"
         >
-          <h4 className="text-sm font-semibold text-slate-200">{f.name}</h4>
-          <div className="rounded-lg bg-slate-950/60 border border-slate-800 px-4 py-3 overflow-x-auto">
+          <div className="flex items-center gap-4">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-cyan-500/35 bg-cyan-500/8 text-lg font-semibold text-cyan-300">
+              Σ
+            </span>
+            <h4 className="text-sm font-semibold text-slate-200">{f.name}</h4>
+          </div>
+          <div className="overflow-x-auto rounded-lg border border-slate-800/80 bg-slate-950/60 px-4 py-3">
             <KaTeX math={f.latex} displayMode className="text-slate-100" />
           </div>
-          <p className="text-sm text-slate-400 leading-relaxed">{f.description}</p>
+          <p className="text-sm leading-relaxed text-slate-400">{f.description}</p>
         </div>
       ))}
     </div>

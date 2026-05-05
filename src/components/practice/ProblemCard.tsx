@@ -1,10 +1,10 @@
 import { Badge } from "@/components/shared/Badge";
 import type { Difficulty, FftProblem } from "@/lib/fftProblems";
 
-const DIFFICULTY_VARIANT: Record<Difficulty, "emerald" | "blue" | "purple"> = {
+const DIFFICULTY_VARIANT: Record<Difficulty, "emerald" | "blue" | "cyan"> = {
   Easy: "emerald",
   Medium: "blue",
-  Hard: "purple",
+  Hard: "cyan",
 };
 
 export function ProblemCard({
@@ -21,10 +21,10 @@ export function ProblemCard({
   };
 
   const containerClasses = [
-    "flex flex-col rounded-2xl border bg-slate-900/60 backdrop-blur p-6 transition-colors",
+    "relative flex min-h-[260px] flex-col rounded-xl border bg-slate-950/45 p-6 shadow-[inset_0_1px_0_rgba(148,163,184,0.04)] backdrop-blur transition-colors",
     selected
-      ? "border-cyan-500/60 ring-1 ring-cyan-500/30 cursor-default"
-      : "border-slate-800 hover:border-slate-700 hover:bg-slate-900/80 cursor-pointer",
+      ? "border-cyan-500/80 ring-1 ring-cyan-500/35 cursor-default"
+      : "border-slate-700/80 hover:border-cyan-500/35 hover:bg-slate-900/55 cursor-pointer",
   ].join(" ");
 
   return (
@@ -41,8 +41,15 @@ export function ProblemCard({
         }
       }}
     >
+      {selected && (
+        <span className="absolute right-3 top-3 flex h-5 w-5 items-center justify-center rounded-full bg-cyan-400 text-slate-950">
+          <svg viewBox="0 0 20 20" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+            <path d="m5 10 3 3 7-7" />
+          </svg>
+        </span>
+      )}
       <div className="flex items-start justify-between gap-3">
-        <h3 className="text-base font-semibold tracking-tight text-slate-100">
+        <h3 className="pr-6 text-base font-semibold tracking-tight text-slate-100">
           {problem.title}
         </h3>
         <Badge variant={DIFFICULTY_VARIANT[problem.difficulty]}>
@@ -59,26 +66,22 @@ export function ProblemCard({
         {selected && <Badge variant="cyan">Selected</Badge>}
       </div>
 
-      <p className="mt-4 text-sm text-slate-400 leading-relaxed flex-1">
+      <p className="mt-5 flex-1 text-sm leading-relaxed text-slate-400">
         {problem.description}
       </p>
 
-      <div className="mt-5 flex flex-wrap items-center gap-3">
-        <span
-          className={
-            selected
-              ? "rounded-md border border-cyan-500/50 bg-cyan-500/10 px-3 py-1.5 text-xs font-medium text-cyan-200"
-              : "rounded-md border border-slate-700 bg-slate-900/60 px-3 py-1.5 text-xs font-medium text-slate-300"
-          }
-        >
-          {selected ? "Selected for practice" : "Click to select"}
-        </span>
+      <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
+        {selected && (
+          <span className="rounded-md border border-cyan-500/50 bg-cyan-500/12 px-3 py-1.5 text-xs font-medium text-cyan-200">
+            Selected
+          </span>
+        )}
         <a
           href={problem.problemUrl}
           target="_blank"
           rel="noopener noreferrer"
           onClick={(e) => e.stopPropagation()}
-          className="text-sm font-medium text-blue-300 hover:text-blue-200"
+          className="ml-auto text-sm font-medium text-blue-300 hover:text-blue-200"
         >
           Open problem →
         </a>

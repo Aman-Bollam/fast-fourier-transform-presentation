@@ -61,53 +61,54 @@ export function TraceShell() {
   const blurb = BLURBS[mode];
 
   return (
-    <div className="space-y-6 pb-20">
+    <div className="space-y-5 pb-20">
       <TraceTabBar mode={mode} onModeChange={handleModeChange} />
 
       {/* Algorithm blurb */}
-      <div className="rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur p-5 space-y-4">
-        <p className="text-sm text-slate-300 leading-relaxed">{blurb.summary}</p>
-        <div className="grid gap-3 sm:grid-cols-3">
+      <div className="rounded-2xl border border-cyan-500/20 bg-[linear-gradient(135deg,rgba(15,23,42,0.92),rgba(2,6,23,0.96))] p-6 shadow-[0_18px_55px_rgba(2,6,23,0.45)] backdrop-blur space-y-5">
+        <p className="max-w-4xl text-sm leading-relaxed text-slate-300">{blurb.summary}</p>
+        <div className="grid gap-4 lg:grid-cols-3">
           {blurb.phases.map((phase, i) => (
-            <div key={phase.label} className="flex gap-3">
-              <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-500/20 text-xs font-bold text-blue-400">
+            <div
+              key={phase.label}
+              className="min-h-32 rounded-xl border border-slate-700/80 bg-slate-950/35 p-4 shadow-[inset_0_1px_0_rgba(148,163,184,0.04)]"
+            >
+              <div className="flex gap-3">
+                <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-500 text-sm font-bold text-white shadow-[0_0_24px_rgba(59,130,246,0.45)]">
                 {i + 1}
-              </span>
-              <div>
-                <p className="text-xs font-semibold text-slate-200">{phase.label}</p>
-                <p className="text-xs text-slate-500 leading-snug">{phase.desc}</p>
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-slate-100">{phase.label}</p>
+                  <p className="mt-2 text-xs leading-relaxed text-slate-400">{phase.desc}</p>
+                </div>
               </div>
             </div>
           ))}
         </div>
-        <p className="text-xs font-mono text-slate-500 border-t border-slate-800 pt-3">{blurb.input}</p>
+        <p className="rounded-xl border border-slate-700/70 bg-slate-950/30 px-4 py-3 text-xs font-mono text-slate-400">{blurb.input}</p>
       </div>
 
       <TraceLegend mode={mode} activeKind={currentStep.kind} />
 
-      <div className="grid gap-6 lg:grid-cols-2">
-        {/* Left column */}
-        <div className="space-y-4">
-          <TraceVisualization step={currentStep} mode={mode} />
-          <TraceCodePanel
-            code={mode === "recursive" ? RECURSIVE_CODE : ITERATIVE_CODE}
-            highlightLine={currentStep.codeLineIndex}
-            annotations={annotations}
-            stepKind={currentStep.kind}
-          />
-        </div>
-
-        {/* Right column */}
+      <div className="grid gap-4 lg:grid-cols-[minmax(0,1.55fr)_minmax(320px,0.95fr)]">
+        <TraceVisualization step={currentStep} mode={mode} />
         <div className="space-y-4">
           {/* Step explanation panel */}
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur p-5 space-y-2">
-            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Step Explanation</p>
-            <p className="text-sm font-medium text-slate-200">{currentStep.stepLabel}</p>
-            <p className="text-sm text-slate-400 leading-relaxed">{currentStep.explanation}</p>
+          <div className="rounded-2xl border border-cyan-500/20 bg-slate-950/45 p-5 shadow-[inset_0_1px_0_rgba(148,163,184,0.04)] backdrop-blur space-y-3">
+            <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">Step Explanation</p>
+            <p className="text-base font-semibold text-slate-100">{currentStep.stepLabel}</p>
+            <p className="text-sm leading-relaxed text-slate-400">{currentStep.explanation}</p>
           </div>
           <VariablePanel variables={variables} />
         </div>
       </div>
+
+      <TraceCodePanel
+        code={mode === "recursive" ? RECURSIVE_CODE : ITERATIVE_CODE}
+        highlightLine={currentStep.codeLineIndex}
+        annotations={annotations}
+        stepKind={currentStep.kind}
+      />
 
       <TraceControls
         stepIndex={stepIndex}

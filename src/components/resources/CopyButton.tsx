@@ -13,7 +13,7 @@ export function CopyButton({ text }: { text: string }) {
   return (
     <button
       onClick={handleCopy}
-      className="rounded-md border border-slate-700 bg-slate-800/60 px-3 py-1 text-xs text-slate-400 hover:text-slate-200 hover:bg-slate-700 transition-colors"
+      className="rounded-md border border-slate-700 bg-slate-950/70 px-3 py-1 text-xs text-slate-400 transition-colors hover:border-cyan-500/40 hover:bg-slate-900 hover:text-slate-200"
     >
       {copied ? "Copied!" : "Copy"}
     </button>

@@ -13,10 +13,10 @@ export interface Citation {
   section?: string;
 }
 
-const CATEGORY_VARIANT: Record<CitationCategory, "blue" | "purple" | "cyan" | "emerald"> = {
+const CATEGORY_VARIANT: Record<CitationCategory, "blue" | "cyan" | "emerald"> = {
   textbook: "blue",
   online: "cyan",
-  competitive: "purple",
+  competitive: "emerald",
 };
 
 const CATEGORY_LABEL: Record<CitationCategory, string> = {
@@ -27,11 +27,11 @@ const CATEGORY_LABEL: Record<CitationCategory, string> = {
 
 export function CitationCard({ citation }: { citation: Citation }) {
   return (
-    <article className="rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur p-6 flex flex-col gap-3">
+    <article className="flex min-h-[310px] flex-col gap-4 rounded-xl border border-cyan-500/20 bg-slate-950/45 p-6 shadow-[inset_0_1px_0_rgba(148,163,184,0.04)] backdrop-blur">
       {/* Header row */}
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1 min-w-0">
-          <h3 className="text-base font-semibold tracking-tight text-slate-100 leading-snug">
+          <h3 className="text-lg font-semibold leading-snug tracking-tight text-slate-100">
             {citation.title}
           </h3>
           <p className="mt-0.5 text-sm text-slate-400">{citation.authors}</p>
@@ -43,23 +43,23 @@ export function CitationCard({ citation }: { citation: Citation }) {
 
       {/* Optional section reference */}
       {citation.section && (
-        <p className="text-xs font-mono text-slate-500 bg-slate-800/60 rounded px-2 py-1 self-start">
+        <p className="self-start rounded-md bg-slate-800/60 px-2 py-1 text-xs font-mono text-slate-400">
           {citation.section}
         </p>
       )}
 
       {/* Description */}
-      <p className="text-sm text-slate-300 leading-relaxed flex-1">{citation.description}</p>
+      <p className="flex-1 text-sm leading-relaxed text-slate-300">{citation.description}</p>
 
       {/* Footer row: year + link */}
-      <div className="flex items-center justify-between mt-auto pt-2 border-t border-slate-800/60">
+      <div className="mt-auto flex items-center justify-between border-t border-slate-800/70 pt-4">
         <span className="text-xs text-slate-500">{citation.year}</span>
         {citation.url && (
           <a
             href={citation.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors"
+            className="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300"
           >
             Visit source →
           </a>

@@ -138,10 +138,12 @@ export function BenchmarkPanel() {
   }
 
   // Auto-run on mount
-  useEffect(() => { handleRun(); }, []); // eslint-disable-line
+  useEffect(() => {
+    void handleRun();
+  }, []);
 
   return (
-    <div className="rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur p-6 space-y-5">
+    <div className="space-y-5 rounded-xl border border-cyan-500/20 bg-slate-950/45 p-5 shadow-[inset_0_1px_0_rgba(148,163,184,0.04)] backdrop-blur">
       <div>
         <h3 className="text-base font-semibold text-slate-100">Live Performance Benchmark</h3>
         <p className="text-sm text-slate-400 mt-1">
@@ -175,11 +177,11 @@ export function BenchmarkPanel() {
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-slate-800">
+                <tr className="border-b border-slate-800/80">
                   <th className="py-2 pr-4 text-left text-xs font-medium text-slate-500">
                     Degree n
                   </th>
-                  <th className="py-2 pr-4 text-right text-xs font-medium text-purple-400">
+                  <th className="py-2 pr-4 text-right text-xs font-medium text-cyan-400">
                     Naive (ms)
                   </th>
                   <th className="py-2 text-right text-xs font-medium text-blue-400">FFT (ms)</th>
@@ -192,7 +194,7 @@ export function BenchmarkPanel() {
                 {state.results.map((r) => (
                   <tr key={r.degree} className="border-b border-slate-800/50">
                     <td className="py-1.5 pr-4 font-mono text-xs text-slate-300">{r.degree}</td>
-                    <td className="py-1.5 pr-4 text-right font-mono text-xs text-purple-300">
+                    <td className="py-1.5 pr-4 text-right font-mono text-xs text-cyan-300">
                       {r.naiveMs.toFixed(2)}
                     </td>
                     <td className="py-1.5 text-right font-mono text-xs text-blue-300">
@@ -209,7 +211,7 @@ export function BenchmarkPanel() {
             </table>
           </div>
           {/* Bar chart */}
-          <ResponsiveContainer width="100%" height={320}>
+          <ResponsiveContainer width="100%" height={260}>
             <BarChart
               data={state.results.map((r) => ({
                 name: `n=${r.degree}`,
@@ -251,13 +253,13 @@ export function BenchmarkPanel() {
               <Legend
                 wrapperStyle={{ color: "#94a3b8", fontSize: 12, paddingTop: 8 }}
               />
-              <Bar dataKey="Naive O(n²)" fill="#7c3aed" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="Naive O(n²)" fill="#06b6d4" radius={[4, 4, 0, 0]} />
               <Bar dataKey="FFT O(n log n)" fill="#2563eb" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
           <button
             onClick={handleRun}
-            className="rounded-lg border border-slate-700 bg-slate-800/60 hover:bg-slate-700 px-4 py-1.5 text-xs text-slate-300 transition-colors"
+            className="rounded-lg border border-slate-700 bg-slate-950/70 px-4 py-1.5 text-xs text-slate-300 transition-colors hover:border-slate-600 hover:bg-slate-900"
           >
             Run again
           </button>

@@ -12,29 +12,29 @@ export function TraceLegend({ mode, activeKind }: TraceLegendProps) {
   const kinds = mode === "recursive" ? RECURSIVE_KINDS : ITERATIVE_KINDS;
 
   return (
-    <div className="rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur p-4">
-      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-3">Step Legend</p>
-      <div className="flex flex-wrap gap-2">
+    <div className="rounded-2xl border border-cyan-500/20 bg-slate-950/45 p-5 shadow-[inset_0_1px_0_rgba(148,163,184,0.04)] backdrop-blur">
+      <p className="mb-4 text-xs font-semibold uppercase tracking-wide text-slate-400">Step Legend</p>
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
         {kinds.map((kind) => {
           const c = STEP_COLORS[kind];
           const isActive = kind === activeKind;
           return (
             <div
               key={kind}
-              className={`flex items-start gap-2 rounded-lg border px-3 py-2 transition-all ${
+              className={`flex min-h-16 items-start gap-2 rounded-lg border px-3 py-3 transition-all ${
                 isActive
                   ? `${c.chipBg} ${c.chipBorder} ring-1 ring-inset ${c.chipBorder}`
-                  : "border-slate-700/50 bg-slate-800/30"
+                  : "border-slate-700/50 bg-slate-900/45"
               }`}
             >
               {/* Color dot */}
               <span
-                className={`mt-1 w-2 h-2 rounded-full shrink-0 ${
+                className={`mt-1 h-2.5 w-2.5 shrink-0 rounded-full ${
                   isActive ? c.chipText.replace("text-", "bg-") : "bg-slate-600"
                 }`}
               />
               <div>
-                <p className={`text-xs font-semibold capitalize ${isActive ? c.chipText : "text-slate-400"}`}>
+                <p className={`text-xs font-semibold capitalize ${isActive ? c.chipText : "text-slate-300"}`}>
                   {STEP_LABELS[kind]}
                 </p>
                 <p className={`text-xs leading-snug ${isActive ? "text-slate-300" : "text-slate-500"}`}>

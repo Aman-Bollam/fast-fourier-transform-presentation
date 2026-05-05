@@ -52,7 +52,7 @@ export function Module2UnityCircle() {
             onClick={() => handleNChange(val)}
             className={`px-3 py-1 rounded-lg text-sm font-mono font-medium transition-colors ${
               n === val
-                ? "bg-purple-600 text-white"
+                ? "bg-cyan-600 text-white"
                 : "border border-slate-700 text-slate-300 hover:bg-slate-800"
             }`}
           >
@@ -101,8 +101,8 @@ export function Module2UnityCircle() {
               cx={pt.x}
               cy={pt.y}
               r={pt.k === selectedK ? 6 : 4}
-              fill={pt.k === selectedK ? "#3b82f6" : "#a855f7"}
-              stroke={pt.k === selectedK ? "#93c5fd" : "#7c3aed"}
+              fill={pt.k === selectedK ? "#3b82f6" : "#06b6d4"}
+              stroke={pt.k === selectedK ? "#93c5fd" : "#22d3ee"}
               strokeWidth={1}
               className="cursor-pointer transition-all"
               onClick={() => setSelectedK(pt.k === selectedK ? null : pt.k)}

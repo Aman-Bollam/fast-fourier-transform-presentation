@@ -8,15 +8,15 @@ interface TraceTabBarProps {
 
 export function TraceTabBar({ mode, onModeChange }: TraceTabBarProps) {
   return (
-    <div className="flex gap-2 border-b border-slate-800 pb-0">
+    <div className="inline-flex overflow-hidden rounded-xl border border-slate-700/80 bg-slate-950/45 p-1 shadow-[inset_0_1px_0_rgba(148,163,184,0.04)]">
       {(["recursive", "iterative"] as TraceMode[]).map(m => (
         <button
           key={m}
           onClick={() => onModeChange(m)}
-          className={`px-4 py-2 text-sm font-medium border-b-2 -mb-px transition-colors ${
+          className={`relative min-w-36 rounded-lg px-5 py-2.5 text-sm font-semibold transition-colors ${
             mode === m
-              ? "border-blue-500 text-blue-400"
-              : "border-transparent text-slate-400 hover:text-slate-200"
+              ? "bg-cyan-500/12 text-cyan-300 shadow-[inset_0_-2px_0_rgba(34,211,238,0.85)]"
+              : "text-slate-400 hover:bg-slate-800/50 hover:text-slate-200"
           }`}
         >
           {m === "recursive" ? "Recursive FFT" : "Iterative FFT"}

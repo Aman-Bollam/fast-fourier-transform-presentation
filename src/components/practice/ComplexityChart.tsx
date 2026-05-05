@@ -32,7 +32,7 @@ function fmtOps(v: number): string {
 
 export function ComplexityChart() {
   return (
-    <div className="rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur p-6 space-y-4">
+    <div className="space-y-4 rounded-xl border border-cyan-500/20 bg-slate-950/45 p-5 shadow-[inset_0_1px_0_rgba(148,163,184,0.04)] backdrop-blur">
       <div>
         <h3 className="text-base font-semibold text-slate-100">Theoretical Operation Count</h3>
         <p className="text-sm text-slate-400 mt-1">
@@ -41,7 +41,7 @@ export function ComplexityChart() {
         </p>
       </div>
 
-      <ResponsiveContainer width="100%" height={340}>
+      <ResponsiveContainer width="100%" height={300}>
         <LineChart data={DATA} margin={{ top: 8, right: 24, bottom: 8, left: 16 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
           <XAxis
@@ -68,7 +68,7 @@ export function ComplexityChart() {
           <Line
             type="monotone"
             dataKey="Naive O(n²)"
-            stroke="#7c3aed"
+            stroke="#06b6d4"
             strokeWidth={2.5}
             dot={false}
             activeDot={{ r: 4 }}
