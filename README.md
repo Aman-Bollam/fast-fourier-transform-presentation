@@ -78,3 +78,8 @@ The production build is validated with:
 ```bash
 npm run build
 ```
+
+## Contributors
+
+Aman Bollam
+Vishesh Gupta
