@@ -73,6 +73,12 @@ src/lib/
 
 The app is mostly static and frontend-driven. Python runs locally in the browser through Pyodide. C++ execution uses Wandbox, so C++ runs require network access to the public Wandbox API.
 
+## Deployment
+
+GitHub Pages deployment is handled by `.github/workflows/deploy.yml`.
+
+In GitHub, go to **Settings → Pages → Build and deployment** and set the source to **GitHub Actions**. After that, every push to `main` builds the static Next.js export and deploys it to Pages.
+
 The production build is validated with:
 
 ```bash
